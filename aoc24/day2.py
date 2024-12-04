@@ -21,12 +21,17 @@ def is_safe_report(values: list[int]) -> bool:
         index += 1
         previous_index = index - 1
 
-    return (all_increasing or all_decreasing) and adjacent_limit
+        # An unsafe report cannot become safe.
+        is_safe = (all_increasing or all_decreasing) and adjacent_limit
+        if not is_safe:
+            return False
+
+    return True
 
 
 def count_safe_reports() -> int:
     """
-    Part 2: Count the number of safe reports.
+    Part 1: Count the number of safe reports.
     """
     lines = get_resource_path("day2.txt").read_text().splitlines()
     safe_count = 0
@@ -36,5 +41,31 @@ def count_safe_reports() -> int:
     return safe_count
 
 
+def count_safe_reports_with_dampening() -> int:
+    """
+    Part 2: Count the number of safe reports with dampening.
+    """
+    lines = get_resource_path("day2.txt").read_text().splitlines()
+    safe_count = 0
+    for line in lines:
+        values = [int(value) for value in line.split()]
+        is_safe = is_safe_report(values)
+        if not is_safe:
+            for index in range(len(values)):
+                values_without_index = values.copy()
+                values_without_index.pop(index)
+                is_safe = is_safe_report(values_without_index)
+                if is_safe:
+                    safe_count += 1
+                    break
+        else:
+            safe_count += 1
+
+    return safe_count
+
+
 if __name__ == "__main__":
+    print("Part 1:")
     print(count_safe_reports())
+    print("Part 2:")
+    print(count_safe_reports_with_dampening())
