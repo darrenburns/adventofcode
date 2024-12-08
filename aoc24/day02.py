@@ -1,5 +1,6 @@
 """https://adventofcode.com/2024/day/2"""
 
+from profile import timer
 from files import get_resource_path
 
 
@@ -29,6 +30,7 @@ def is_safe_report(values: list[int]) -> bool:
     return True
 
 
+@timer("Day 2 Part 1")
 def count_safe_reports() -> int:
     """
     Part 1: Count the number of safe reports.
@@ -41,6 +43,7 @@ def count_safe_reports() -> int:
     return safe_count
 
 
+@timer("Day 2 Part 2")
 def count_safe_reports_with_dampening() -> int:
     """
     Part 2: Count the number of safe reports with dampening.
@@ -65,7 +68,5 @@ def count_safe_reports_with_dampening() -> int:
 
 
 if __name__ == "__main__":
-    print("Part 1:")
     print(count_safe_reports())
-    print("Part 2:")
     print(count_safe_reports_with_dampening())

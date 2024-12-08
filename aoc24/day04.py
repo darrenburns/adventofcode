@@ -1,4 +1,5 @@
 from collections import Counter, deque
+from profile import timer
 from files import get_resource_path
 
 SEARCH_DIRECTIONS = [
@@ -13,6 +14,7 @@ SEARCH_DIRECTIONS = [
 ]
 
 
+@timer("Day 4 Part 1")
 def find_word(word: str) -> int:
     # Find all occurrences of letter "x", and search in all the required directions.
     lines = get_resource_path("day4.txt").read_text().splitlines()
@@ -42,6 +44,7 @@ def find_word(word: str) -> int:
     return found_count
 
 
+@timer("Day 4 Part 2")
 def find_xmas_star_shape() -> int:
     lines = get_resource_path("day4.txt").read_text().splitlines()
     grid = [list(line) for line in lines]

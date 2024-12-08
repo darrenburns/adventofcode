@@ -2,9 +2,11 @@
 
 from collections import Counter
 import heapq
+from profile import timer
 from files import get_resource_path
 
 
+@timer("Day 1 Part 1")
 def compute_total_distance() -> int:
     """
     Part 1: Compute the total distance between the left and right lists.
@@ -29,6 +31,7 @@ def compute_total_distance() -> int:
     return total_distance
 
 
+@timer("Day 1 Part 2")
 def compute_similarity_score() -> int:
     """
     Part 2: Compute the similarity score between the left and right lists.

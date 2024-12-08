@@ -4,6 +4,7 @@ from profile import timer
 from files import get_resource_path
 
 
+@timer("Day 5 Part 1")
 def day5_part1():
     data = iter(get_resource_path("day5.txt").read_text().splitlines())
     order_rules: dict[int, set[int]] = defaultdict(set)
@@ -36,6 +37,7 @@ def day5_part1():
             yield middle_number
 
 
+@timer("Day 5 Part 2")
 def day5_part2():
     data = iter(get_resource_path("day5.txt").read_text().splitlines())
     order_rules: dict[int, set[int]] = defaultdict(set)
@@ -86,8 +88,5 @@ def fix_order(numbers: list[int], order_rules: dict[int, set[int]]) -> list[int]
 
 
 if __name__ == "__main__":
-    with timer("Day 5 Part 1"):
-        print(sum(day5_part1()))
-
-    with timer("Day 5 Part 2"):
-        print(day5_part2())
+    print(sum(day5_part1()))
+    print(day5_part2())

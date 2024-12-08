@@ -13,6 +13,7 @@ DIRECTIONS = [
 ]
 
 
+@timer("Day 6 Part 1")
 def day6_part1() -> int:
     map: list[list[Literal[".", "#", "^"]]] = [
         list(line) for line in get_resource_path("day6.txt").read_text().splitlines()
@@ -50,6 +51,7 @@ def day6_part1() -> int:
     return len(visited)
 
 
+@timer("Day 6 Part 2")
 def day6_part2() -> int:
     # We can be sure a loop is occuring if guard bumps into the same obstacle twice.
 
@@ -104,7 +106,5 @@ def day6_part2() -> int:
 
 
 if __name__ == "__main__":
-    with timer("Day 6 Part 1"):
-        print(day6_part1())
-    with timer("Day 6 Part 2"):
-        print(day6_part2())
+    print(day6_part1())
+    print(day6_part2())
