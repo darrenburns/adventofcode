@@ -6,6 +6,6 @@ cd "$(dirname "$0")/aoc24" || exit 1
 # Find all Python files starting with "day" and sort them numerically
 for file in $(ls day[0-9]*.py | sort -V); do
     echo "Running $file..."
-    python3 "$file"
+    uv run "$file"
     echo "----------------------------------------"
 done 
